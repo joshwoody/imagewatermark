@@ -76,7 +76,11 @@ class main_listener implements EventSubscriberInterface
                 
                 imagedestroy($watermark);
 
-              // TODO: Update file size and stuff
+                // Update file size 
+		$filedata = $event['filedata'];
+		clearstatcache();
+		$filedata['filesize'] = filesize($this->root_path . $this->config['upload_path'] . '/' . $filedata['physical_filename']);
+		$event['filedata'] = $filedata;
         }
 
 
