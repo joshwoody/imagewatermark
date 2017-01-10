@@ -1,0 +1,8 @@
+services:
+    joshwoody.imagewatermark.listener:
+        class: joshwoody\imagewatermark\event\main_listener
+        arguments: 
+            - '@config'
+            - '%core.root_path%'
+        tags:
+            - { name: event.listener }

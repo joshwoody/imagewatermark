@@ -1,0 +1,32 @@
+{
+    "name": "joshwoody/imagewatermark",
+    "type": "phpbb-extension",
+    "description": "Adds watermarks to attached image automatically",
+    "homepage": "joshwoody.com",
+    "version": "1.0.0-dev",
+    "time": "2017-01-09",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Josh Woody",
+            "email": "",
+            "homepage": "joshwoody.com",
+            "role": ""
+        },
+        {
+            "name": "",
+            "email": "",
+            "homepage": "",
+            "role": ""
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "extra": {
+        "display-name": "Image Watermark",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.1.4,<3.2.0@dev"
+        }
+    }
+}
