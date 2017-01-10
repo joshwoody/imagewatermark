@@ -20,17 +20,17 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class main_listener implements EventSubscriberInterface
 {
-	protected $config;
-	protected $root_path;
+        protected $config;
+        protected $root_path;
 
-	function __construct(
-		\phpbb\config\db $config,
-		$phpbb_root_path	
-	)
-	{
-		$this->config = $config;
-		$this->root_path = $phpbb_root_path;
-	}
+        function __construct(
+                \phpbb\config\db $config,
+                $phpbb_root_path 
+        )
+        {
+                $this->config = $config;
+                $this->root_path = $phpbb_root_path;
+        }
 
         /**
         * Assign functions defined in this class to event listeners in the core
@@ -66,8 +66,8 @@ class main_listener implements EventSubscriberInterface
                 $watermark_y = imagesy($watermark);
 
                 $image = $this->image_get_handle($event);
-		$image_x = imagesx($image);
-		$image_y = imagesy($image);
+                $image_x = imagesx($image);
+                $image_y = imagesy($image);
 
                 imagecopy($image, $watermark, $image_x - $watermark_x, 
                     $image_y - $watermark_y, 0, 0, $watermark_x, $watermark_y);
@@ -77,10 +77,10 @@ class main_listener implements EventSubscriberInterface
                 imagedestroy($watermark);
 
                 // Update file size 
-		$filedata = $event['filedata'];
-		clearstatcache();
-		$filedata['filesize'] = filesize($this->root_path . $this->config['upload_path'] . '/' . $filedata['physical_filename']);
-		$event['filedata'] = $filedata;
+                $filedata = $event['filedata'];
+                clearstatcache();
+                $filedata['filesize'] = filesize($this->root_path . $this->config['upload_path'] . '/' . $filedata['physical_filename']);
+                $event['filedata'] = $filedata;
         }
 
 
@@ -106,7 +106,7 @@ class main_listener implements EventSubscriberInterface
                     break;
                 }
 
-		return $image;
+                return $image;
         }
 
         private function image_write($event, $image)
@@ -131,6 +131,6 @@ class main_listener implements EventSubscriberInterface
                 }
 
                 imagedestroy($image);
-	}
+        }
 
 }
