@@ -69,8 +69,8 @@ class main_listener implements EventSubscriberInterface
         $image_x = imagesx($image);
         $image_y = imagesy($image);
 
-        imagecopy($image, $watermark, $image_x - $watermark_x, 
-            $image_y - $watermark_y, 0, 0, $watermark_x, $watermark_y);
+        imagecopy($image, $watermark, $image_x - ($watermark_x + 10), 
+            $image_y - ($watermark_y + 10), 0, 0, $watermark_x, $watermark_y);
 
         $this->image_write($event, $image);
         
