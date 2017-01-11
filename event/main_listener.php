@@ -59,6 +59,12 @@ class main_listener implements EventSubscriberInterface
             return;
         }
 
+        if (!file_exists($this->root_path . 'images/' . $this->config['watermark_file']))
+        {
+            // TODO: Throw an error?
+            return;
+        }
+
         $watermark = imagecreatefrompng($this->root_path .  'images/' . 
             $this->config['watermark_file']);
 
