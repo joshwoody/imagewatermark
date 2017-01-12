@@ -22,25 +22,26 @@ class main_module
 		global $config, $request, $template, $user;
 
 		$user->add_lang_ext('joshwoody/imagewatermark', 'common');
-		$this->tpl_name = 'acp_demo_body';
+		$this->tpl_name = 'acp_imagewatermark_body';
 		$this->page_title = $user->lang('ACP_DEMO_TITLE');
-		add_form_key('acme/demo');
+		add_form_key('imagewatermark');
 
 		if ($request->is_set_post('submit'))
 		{
-			if (!check_form_key('acme/demo'))
+			if (!check_form_key('imagewatermark'))
 			{
 				trigger_error('FORM_INVALID');
 			}
 
-			$config->set('acme_demo_goodbye', $request->variable('acme_demo_goodbye', 0));
+			$config->set('watermark_file', $request->variable('watermark_file', 0));
 
-			trigger_error($user->lang('ACP_DEMO_SETTING_SAVED') . adm_back_link($this->u_action));
+			trigger_error($user->lang('ACP_WATERMARK_SETTING_SAVED') . adm_back_link($this->u_action));
 		}
+
+                // fetch list of possible images
 
 		$template->assign_vars(array(
 			'U_ACTION'				=> $this->u_action,
-			'ACME_DEMO_GOODBYE'		=> $config['acme_demo_goodbye'],
 		));
 	}
 }
