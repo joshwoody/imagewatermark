@@ -19,11 +19,11 @@ class main_module
 
 	public function main($id, $mode)
 	{
-		global $config, $request, $template, $user;
+		global $config, $request, $template, $user, $phpbb_root_path;
 
 		$user->add_lang_ext('joshwoody/imagewatermark', 'common');
 		$this->tpl_name = 'acp_imagewatermark_body';
-		$this->page_title = $user->lang('ACP_DEMO_TITLE');
+		$this->page_title = $user->lang('ACP_IMAGEWATERMARK_TITLE');
 		add_form_key('imagewatermark');
 
 		if ($request->is_set_post('submit'))
@@ -39,6 +39,22 @@ class main_module
 		}
 
                 // fetch list of possible images
+                $img_path =  'images';
+                if ($dir = @opendir($phpbb_root_path . $img_path))
+		{
+			while (($file = readdir($dir)) !== false)
+			{
+				if (is_file($phpbb_root_path . $img_path . '/' . $file) && preg_match('#\.png$#i', $file))
+				{
+                                    $template->assign_block_vars('watermark_file_loop', array(
+                                        // Do not use $phpbb_root_path
+                                        'PATH'  => $img_path . '/' . $file,
+                                    ));
+				}
+			}
+			closedir($dir);
+                }
+
 
 		$template->assign_vars(array(
 			'U_ACTION'				=> $this->u_action,
