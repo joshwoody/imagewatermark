@@ -40,20 +40,26 @@ class main_module
 
                 // fetch list of possible images
                 $img_path =  'images';
+                $files = array('');
                 if ($dir = @opendir($phpbb_root_path . $img_path))
 		{
 			while (($file = readdir($dir)) !== false)
 			{
 				if (is_file($phpbb_root_path . $img_path . '/' . $file) && preg_match('#\.png$#i', $file))
 				{
-                                    $template->assign_block_vars('watermark_file_loop', array(
-                                        // Do not use $phpbb_root_path
-                                        'PATH'  => $file,
-                                        'SELECTED'  => ($config['watermark_file'] == $file) ? 'selected="selected"' : '',
-                                    ));
+                                    $files[] = $file;
 				}
 			}
 			closedir($dir);
+                }
+
+                foreach ($files as $file)
+                {
+                    $template->assign_block_vars('watermark_file_loop', array(
+                        'LABEL' => ($file == '') ? $user->lang['NONE'] : $file,
+                        'PATH'  => $file,
+                        'SELECTED'  => ($config['watermark_file'] == $file) ? 'selected="selected"' : '',
+                    ));
                 }
 
 
