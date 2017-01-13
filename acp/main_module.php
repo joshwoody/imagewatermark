@@ -33,7 +33,7 @@ class main_module
 				trigger_error('FORM_INVALID');
 			}
 
-			$config->set('watermark_file', $request->variable('watermark_file', 0));
+			$config->set('watermark_file', $request->variable('watermark_file', ''));
 
 			trigger_error($user->lang('ACP_WATERMARK_SETTING_SAVED') . adm_back_link($this->u_action));
 		}
@@ -48,7 +48,8 @@ class main_module
 				{
                                     $template->assign_block_vars('watermark_file_loop', array(
                                         // Do not use $phpbb_root_path
-                                        'PATH'  => $img_path . '/' . $file,
+                                        'PATH'  => $file,
+                                        'SELECTED'  => ($config['watermark_file'] == $file) ? 'selected="selected"' : '',
                                     ));
 				}
 			}
