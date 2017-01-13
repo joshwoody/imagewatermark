@@ -19,9 +19,11 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, array(
-	'ACP_IMAGEWATERMARK_SETTING_SAVED'	=> 'Image Watermark settings updated',
+	'ACP_WATERMARK_SETTING_SAVED'	        => 'Image Watermark settings updated',
 
         'WATERMARK_FILE'                        => 'Watermark File',
         'WATERMARK_FILE_EXPLAIN'                => 'File must be a PNG image, and must already exist in `images` directory.',
+
+        'NONE'      => 'None',
 
 ));

@@ -19,5 +19,5 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, array(
-	'ACP_DEMO_TITLE'			=> 'Demo Module',
+	'ACP_IMAGEWATERMARK_TITLE'			=> 'Image Watermark',
 ));
