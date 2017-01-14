@@ -19,12 +19,11 @@ class main_info
 	{
 		return array(
 			'filename'	=> '\joshwoody\imagewatermark\acp\main_module',
-			'title'		=> 'ACP_DEMO_TITLE',
+			'title'		=> 'ACP_IMAGEWATERMARK_TITLE',
 			'modes'		=> array(
 				'settings'	=> array(
-					'title'	=> 'ACP_DEMO',
+					'title'	=> 'ACP_IMAGEWATERMARK_TITLE',
 					'auth'	=> 'ext_joshwoody/imagewatermark && acl_a_board',
-					'cat'	=> array('ACP_DEMO_TITLE')
 				),
 			),
 		);
